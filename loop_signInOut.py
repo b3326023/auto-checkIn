@@ -6,10 +6,13 @@ psw = 'Irene520'
 
 driver = webdriver.Chrome()
 
+#連至嘉南藥理大學網路大學網頁
 driver.get('http://elearning.cnu.edu.tw/mooc/index.php')
 time.sleep(2)
 
+i = 0
 while True:
+    i += 1
     btn_signin = driver.find_element_by_xpath('/html/body/div/header/div/div/div[3]/div/ul[1]/li[1]/a')
     btn_signin.click()
     time.sleep(1)
@@ -26,6 +29,8 @@ while True:
     btn_signin1.click()
     time.sleep(2)
 
+
+    #因此網站會有彈出視窗問題，故需切換視窗後繼續動作
     try:
         driver.switch_to_window(driver.window_handles[1])
         driver.close()
@@ -33,8 +38,17 @@ while True:
     except IndexError:
         print('No other windows.')
     
-
     driver.switch_to.frame('s_sysbar')
     btn_signout = driver.find_element_by_xpath('/html/body/div/header/div/div/div[4]/div/ul/li[3]/a')
     btn_signout.click()
     time.sleep(1)
+
+    #一定次數後，重啟瀏覽器
+    if i == 50:
+        driver.close()
+        driver = webdriver.Chrome()
+        driver.get('http://elearning.cnu.edu.tw/mooc/index.php')
+        time.sleep(2)
+        i = 0
+
+        
