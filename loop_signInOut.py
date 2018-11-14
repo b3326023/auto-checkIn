@@ -12,7 +12,11 @@ time.sleep(2)
 
 i = 0
 while True:
+<<<<<<< Updated upstream
     i += 1
+=======
+
+>>>>>>> Stashed changes
     btn_signin = driver.find_element_by_xpath('/html/body/div/header/div/div/div[3]/div/ul[1]/li[1]/a')
     btn_signin.click()
     time.sleep(1)
@@ -42,6 +46,7 @@ while True:
     btn_signout = driver.find_element_by_xpath('/html/body/div/header/div/div/div[4]/div/ul/li[3]/a')
     btn_signout.click()
     time.sleep(1)
+<<<<<<< Updated upstream
 
     #一定次數後，重啟瀏覽器
     if i == 50:
@@ -52,3 +57,8 @@ while True:
         i = 0
 
         
+=======
+    i += 1
+    if i == 389:
+        break
+>>>>>>> Stashed changes
